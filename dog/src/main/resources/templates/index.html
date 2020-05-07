@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Dogs Index</title>
+</head>
+<body>
+	<div th:switch="${dogs}">
+		<h2 th:case="null">No Dogs yet!</h2>
+		<div th:case="*">
+			<h2>Dogs</h2>
+			<table>
+				<tbody>
+					<tr th:each="dog : ${dogs}">
+						<td th:text="${dog.id}"></td><br/>
+						<td></td>
+						<td th:text="${dog.name}"></td>
+						<td></td>
+						<td><a th:href="@{/edit/{id}(id=${dog.id})}">Edit</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p>
+			<a href="/signup">Add a new Dog</a>
+		</p>
+	</div>
+</body>
+</html>
